@@ -20,15 +20,23 @@ public:
 	}
 	People(string name, int arms, int legs, int head)
 	{
+		cout << "Constructor #" << this << endl;
 		this->name = name;
 		this->arms = arms;
 		this->legs = legs;
 		this->head = head;
-
+	}
+	People(const People &other)
+	{
+		cout << "Constructor copir #" << this << endl;
+		this->name = other.name;
+		this->arms = other.arms;
+		this->legs = other.legs;
+		this->head = other.head;
 	}
 	~People()
 	{
-		cout << "\nDestruktor\n";
+		cout << "\nDestruktor #" << this << endl;
 	}
 	void Print()
 	{
@@ -51,7 +59,7 @@ public:
 		head = 0;
 	}
 	Monkey(string name, int paws, int tails, int head)
-	{
+	{		
 		this->name = name;
 		this->paws = paws;
 		this->tails = tails;
@@ -63,18 +71,21 @@ public:
 	}
 };
 
-void Op(People x)
+/*void Op(People x)
 {
-	
-}
+	cout << "Op" << endl;
+}*/
 
 int main()
 {
 	People x("Mark", 2, 2, 1);
 	Monkey y("Molly", 4, 1, 1);
 	//x = y;
+	People z(x);
+	z.Print();
 	x.Print();
-	y.Print();
-	system("pause");
+	y.Print();	
+	//Op(x);
+	
 	return 0;
 }
